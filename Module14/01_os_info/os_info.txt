@@ -1,0 +1,5 @@
+OS info is 
+uname_result(system='Darwin', node='MacBook-Air-Svetlana.local', release='22.2.0', version='Darwin Kernel Version 22.2.0: Fri Nov 11 02:08:47 PST 2022; root:xnu-8792.61.2~4/RELEASE_X86_64', machine='x86_64', processor='i386')
+
+Python version is 3.8.1 (v3.8.1:1b293b6006, Dec 18 2019, 14:08:53) 
+[Clang 6.0 (clang-600.0.57)] ('64bit', '')
