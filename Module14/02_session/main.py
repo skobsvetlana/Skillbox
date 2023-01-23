@@ -1,3 +1,4 @@
+#Задача 2. Сессия
 def calculate_line_equation(x1, y1, x2, y2):
     if x1 == x2:
         return 'x = ' + str(x1)
@@ -7,6 +8,9 @@ def calculate_line_equation(x1, y1, x2, y2):
 
     x_diff = x1 - x2
     y_diff = y1 - y2
+
+    if x_diff == 0 and y_diff == 0:
+        return "Ошибка ввода. Координаты первой и второй точки совпадают."
 
     k = y_diff / x_diff
     b = y2 - k * x2

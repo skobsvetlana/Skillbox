@@ -1,3 +1,4 @@
+#Задача 3. Сумма и разность
 def calculate_sum_of_didgits(number):
     result = 0
     while number > 0:
