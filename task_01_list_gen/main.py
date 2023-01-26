@@ -9,8 +9,8 @@ def display_result(odd_numbers):
 def get_odd_numbers(number):
     result = []
 
-    for i in range(number):
-        if i % 2 == 0:
+    for i in range(1, number + 1):
+        if i % 2 != 0:
             result.append(i)
 
     return result
