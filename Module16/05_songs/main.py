@@ -1,3 +1,12 @@
+def get_songs_duration(song):
+    duration = 0
+    for el in violator_songs:
+        if el[0] == song:
+            duration = el[1]
+
+    return duration
+
+
 violator_songs = [
     ['World in My Eyes', 4.86],
     ['Sweetest Perfection', 4.43],
@@ -10,4 +19,17 @@ violator_songs = [
     ['Clean', 5.83]
 ]
 
-# TODO здесь писать код
+count = int(input('Сколько песен выбрать?'))
+total_duration = 0
+
+for i in range(count):
+    print(f'Название {i + 1}-й песни: ')
+    song = input()
+    duration = get_songs_duration(song)
+    if duration == 0:
+        print(f'{song} не в альбоме')
+    total_duration += duration
+    total_duration = round(total_duration, 2)
+
+print(f'Общее время звучания песен: {total_duration} минуты')
+
