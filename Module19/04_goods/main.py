@@ -32,5 +32,6 @@ for name, id in goods.items():
         total_quantity += el['quantity']
         total_price += el['price'] * el['quantity']
 
-    print('{} — {} штук, стоимость {:,.2f} рубля'.format(name, total_quantity, total_price).replace(',', ' '))
+    print('{} — {} штук, '.format(name, total_quantity), end='')
+    print('стоимость {:,.2f} рубля'.format(total_price).replace(',', ' '))
 
