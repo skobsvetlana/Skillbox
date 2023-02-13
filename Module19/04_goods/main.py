@@ -24,4 +24,13 @@ store = {
     ],
 }
 
-# TODO здесь писать код
+for name, id in goods.items():
+    total_quantity = 0
+    total_price = 0
+
+    for el in store[id]:
+        total_quantity += el['quantity']
+        total_price += el['price'] * el['quantity']
+
+    print('{} — {} штук, стоимость {:,.2f} рубля'.format(name, total_quantity, total_price).replace(',', ' '))
+
