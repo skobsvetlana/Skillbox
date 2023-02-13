@@ -14,7 +14,9 @@ for i in range(n):
     else:
         orders[order[0]] = {order[1] : order[2]}
 
-for name, pizzas in orders.items():
+
+names = sorted(orders.keys())
+for name in names:
     print('{}:'.format(name))
-    for pizza, num in pizzas.items():
+    for pizza, num in orders[name].items():
         print('\t{}:{}'.format(pizza, num))
