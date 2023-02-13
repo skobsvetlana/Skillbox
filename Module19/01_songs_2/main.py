@@ -14,7 +14,7 @@ n = int(input('Сколько песен выбрать? '))
 total_duration = 0
 
 for i in range(n):
-    print('Название {}-ой песни: '.format(i + 1))
+    print('Название {}-ой песни: '.format(i + 1), end='')
     name = input()
     total_duration += violator_songs[name]
 

@@ -1,3 +1,10 @@
+def print_keys_values(data):
+    for key, value in data.items():
+        print('key = {}'.format(key), end='')
+        print('\tvalue = {}'.format(value))
+    # print('*' * 200)
+
+
 data = {
     "address": "0x544444444444",
     "ETH": {
@@ -44,5 +51,26 @@ data = {
     ]
 }
 
+# Вывести списки ключей и значений словаря.
+print_keys_values(data)
 
-# TODO здесь писать код
+# В “ETH” добавить ключ “total_diff” со значением 100.
+data['ETH']['total_diff'] = 100
+# print('\n', 'data["ETH"]:', '\n', data['ETH'])
+# print('*' * 200)
+
+# Внутри “fst_token_info” значение ключа “name” поменять с “fdf” на “doge”.
+data['tokens'][0]['fst_token_info']['name'] = 'doge'
+# print('\n', "data['tokens']:", '\n', data['tokens'])
+# print('*' * 200)
+
+# Удалить “total_out” из tokens и присвоить его значение в “total_out” внутри “ETH”.
+data['ETH']['total_out'] = data['tokens'][0].pop('total_out')
+# print('\n\n', "data['tokens']:", '\n', data['tokens'])
+# print('\n', "data['ETH']:", data['ETH'])
+# print('*' * 200)
+
+# Внутри "sec_token_info" изменить название ключа “price” на “total_price”
+price = data['tokens'][1]['sec_token_info'].pop('price')
+data['tokens'][1]['sec_token_info']['total_price'] = price
+# print(data['tokens'][1]['sec_token_info'])
