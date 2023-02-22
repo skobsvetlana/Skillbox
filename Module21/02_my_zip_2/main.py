@@ -1,11 +1,12 @@
-def my_zip(res, *arg):
-    if [] not in arg:
-        arg = [list(x) for x in arg]
-        res.append(tuple([x.pop(0) for x in arg]))
-        my_zip(res, *arg)
+def my_zip(*arg):
+    n = min([len(obj) for obj in arg])
+    res = ((obj[i] for obj in arg) for i in range(n))
+
+    return res
 
 
-res = []
-my_zip(res, {'a': 1, 'b': 2, 'c': 3}, [1, 2, 3, 4, 5], (3, 4, 5), "asdf")
+# res = my_zip([1, 2, 3, 4, 5], (3, 4, 5), "asdf")
+#
+# for el in res:
+#     print(list(el))
 
-#print(res)
