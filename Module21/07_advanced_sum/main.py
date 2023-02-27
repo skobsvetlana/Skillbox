@@ -1,23 +1,16 @@
-def flat(my_list):
-    if not my_list:
-        return []
-
-    if isinstance(my_list[0], list):
-        return flat(my_list[0]) + flat(my_list[1:])
-    else:
-        return my_list[:1] + flat(my_list[1:])
-
-
-def my_sum(*args, res=0):
-    for arg in args:
-        if isinstance(arg, list):
-           my_list = flat(arg)
-           res += sum(my_list)
+def flat(obj):
+    result = []
+    for el in obj:
+        if isinstance(el, int):
+            result.append(el)
         else:
-            res += arg
+            result.extend(flat(el))
+    return result
 
-    return res
 
-#print(my_sum([[1, 2, [3]], [1], 3]))
-#print(my_sum(1, 2, 3, 4, 5))
+def my_sum(*args):
+    return sum(flat(args))
 
+
+# print(my_sum([[1, 2, [3]], [1], 3]))
+# print(my_sum(1, 2, 3, 4, 5))
