@@ -15,5 +15,3 @@ gardener.harvest()
 
 gardener.print_info()
 
-print(gardener.name)
-print(gardener.garden)
