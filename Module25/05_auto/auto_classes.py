@@ -1,7 +1,7 @@
 import math
 
 class Auto:
-    def __init__(self, coordinates=(0, 0), angle=45):
+    def __init__(self, coordinates: object = (0, 0), angle: object = 45) -> object:
         self.set_coordinates(coordinates)
         self.set_angle(angle)
 
@@ -13,7 +13,7 @@ class Auto:
         )
 
 
-    def drive(self, distance):
+    def move(self, distance):
         x, y = self.__coordinates
         x += round(distance * math.cos(math.radians(self.__angle)), 0)
         y += round(distance * math.sin(math.radians(self.__angle)), 0)
@@ -51,8 +51,56 @@ class Auto:
     def get_coordinates(self):
         return self.__coordinates
 
+
+    def get_angle(self):
+        return self.__angle
+
+
 class Bus(Auto):
+    total_money = 0
     def __init__(self):
         super().__init__()
+        self.passenger_count = 0
+        self.money = 0
+        self.ticket_price = 25
+
+
+    def __str__(self):
+        return 'Автобус сейчас находится в точке с координатами {}, направление движения - {} градусов.' \
+               '\nСейчас в автобусе {} пассажиров. Водитель заработал за поездку {} рублей. ' \
+               'Заработал всего - {}'.format(
+            self.get_coordinates(),
+            self.get_angle(),
+            self.passenger_count,
+            self.money,
+            self.total_money
+        )
+
+
+    def get_in(self, num):
+        if num > 0:
+            self.passenger_count += num
+        else:
+            print('Количество пассажиров должно быть больше 0')
+
+
+    def get_out(self, num):
+        if 0 < num  < self.passenger_count:
+            self.passenger_count -= num
+        else:
+            print('Количество пассажиров должно быть больше 0 и меньше {}'.format(self.passenger_count))
+
+
+    def set_ticket_price(self, new_ticket_price):
+        self.ticket_price = new_ticket_price
+
+
+    def move(self, distance):
+        super().move(distance)
+        self.money = distance * self.passenger_count * self.ticket_price
+        self.total_money += self.money
+
+
+
 
 
