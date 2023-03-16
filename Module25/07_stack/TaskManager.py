@@ -21,7 +21,7 @@ class TaskManager:
 
     def delete_task(self, task, priority):
         if not priority in self.task.keys():
-            print("Задача с таким приоритетом нет!")
+            print("Задачи с таким приоритетом нет!")
         else:
             spam = []
 
