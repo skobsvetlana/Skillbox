@@ -23,21 +23,25 @@ class TaskManager:
         if not priority in self.task.keys():
             print("Задачи с таким приоритетом нет!")
         else:
-            spam = []
+            spam = Stack()
 
-            while 1:
+            while True:
                 el = self.task[priority].pop()
                 if not el:
                     print('')
                     break
                 if el != task:
-                    spam.append(el)
+                    spam.add(el)
                 else:
                     print(f'{el} has been removed')
 
 
-            while len(spam):
-                self.task[priority].add(spam.pop())
+            while True:
+                el = spam.pop()
+                if not el:
+                    break
+                self.task[priority].add(el)
+
 
 
 
