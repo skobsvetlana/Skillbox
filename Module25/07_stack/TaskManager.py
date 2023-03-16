@@ -19,3 +19,28 @@ class TaskManager:
             self.task[priority].add(task)
 
 
+    def delete_task(self, task, priority):
+        if not priority in self.task.keys():
+            print("Задача с таким приоритетом нет!")
+        else:
+            spam = []
+
+            while 1:
+                el = self.task[priority].pop()
+                if not el:
+                    print('')
+                    break
+                if el != task:
+                    spam.append(el)
+                else:
+                    print(f'{el} has been removed')
+
+
+            while len(spam):
+                self.task[priority].add(spam.pop())
+
+
+
+
+
+
