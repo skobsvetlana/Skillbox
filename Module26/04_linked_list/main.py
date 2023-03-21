@@ -17,7 +17,7 @@ class LinkedList:
         string = "["
         node = self.head
         while node.next:
-            string += str(node.value) + ' '
+            string += str(node.value) + ', '
             node = node.next
         string += str(node.value) + ']'
 
@@ -45,19 +45,24 @@ class LinkedList:
 
     def get(self, ind):
         curr = self.head
-        for _ in range(ind):
-            curr = curr.next
+        try:
+            for _ in range(ind):
+                curr = curr.next
+        except AttributeError:
+            return f'Элемента с таким индексом {ind} не существует'
 
         return curr
 
 
-    def remove(self, value):
+    def remove(self, ind):
         curr = self.head
-        for _ in range(value - 1):
-            curr = curr.next
+        try:
+            for _ in range(ind - 1):
+                curr = curr.next
 
-        curr.next = curr.next.next
-
+            curr.next = curr.next.next
+        except AttributeError:
+            print(f'Элемента с таким индексом {ind} не существует')
 
 
 my_linked_list = LinkedList()
