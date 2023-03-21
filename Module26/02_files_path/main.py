@@ -15,7 +15,6 @@ path = os.path.abspath('../../')
 required_dir = 'Module26'
 
 
-
 for file in gen_files_path(required_dir=required_dir, path=path):
     print(file)
 
