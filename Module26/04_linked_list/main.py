@@ -24,6 +24,17 @@ class LinkedList:
         return string
 
 
+    def __iter__(self):
+        return self
+
+
+    def __next__(self):
+        if not self.head:
+            raise StopIteration
+        item = self.head.value
+        self.head = self.head.next
+        return item
+
 
     def find_tail(self, head: Node) -> Node:
         tail = head
@@ -75,3 +86,10 @@ print('Получение третьего элемента:', my_linked_list.ge
 print('Удаление второго элемента.')
 my_linked_list.remove(1)
 print('Новый список:', my_linked_list)
+
+my_linked_list.append(40)
+my_linked_list.append(50)
+print('Текущий список:', my_linked_list)
+
+for i in my_linked_list:
+    print(i)
