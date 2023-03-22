@@ -80,6 +80,8 @@ class LinkedList:
         except AttributeError:
             print(f'Элемента с таким индексом {ind} не существует')
 
+        self.length -= 1
+
 
 my_linked_list = LinkedList()
 my_linked_list.append(10)
