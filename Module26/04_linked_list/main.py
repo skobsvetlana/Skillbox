@@ -1,3 +1,5 @@
+from typing import Any, Optional
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -11,6 +13,7 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
+        self.length = 0
 
 
     def __str__(self):
@@ -44,7 +47,7 @@ class LinkedList:
         return tail
 
 
-    def append(self, node):
+    def append(self, node: Any) -> None:
         if not isinstance(node, Node):
             node = Node(node)
 
@@ -53,8 +56,10 @@ class LinkedList:
         else:
             self.head = node
 
+        self.length += 1
 
-    def get(self, ind):
+
+    def get(self, ind: int) -> Optional:
         curr = self.head
         try:
             for _ in range(ind):
@@ -65,7 +70,7 @@ class LinkedList:
         return curr
 
 
-    def remove(self, ind):
+    def remove(self, ind: int) -> None:
         curr = self.head
         try:
             for _ in range(ind - 1):
