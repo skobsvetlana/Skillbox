@@ -2,7 +2,7 @@ from typing import Callable, Any
 import functools
 import time
 
-def how_are_you(func: Callable, *args, **kwargs) -> Callable:
+def sleep(func: Callable, *args, **kwargs) -> Callable:
     """Декоратор, который перед выполнением декорируемой
     функции ждёт несколько секунд. """
 
@@ -17,7 +17,7 @@ def how_are_you(func: Callable, *args, **kwargs) -> Callable:
     return wrapped_func
 
 
-@how_are_you
+@sleep
 def test() -> None:
     '''Какая-то функция'''
 
