@@ -1,4 +1,6 @@
 import os
+import functools
+from typing import Callable, Any
 
 class File:
     """Модернизированная версия контекст-менеджера File — теперь при попытке
@@ -24,6 +26,9 @@ class File:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.file.close()
+
+        return True
+
 
 
 with File('example.txt', 'r') as file:
