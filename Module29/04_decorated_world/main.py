@@ -22,7 +22,7 @@ def decorated_decorator(func: Callable) -> Callable:
     '''Декоратор.'''
 
     @functools.wraps(func)
-    def wrapper(func: Callable, *args, **kwargs) -> Callable:
+    def wrapper(*args, **kwargs) -> Callable:
         result = func(*args, **kwargs)
         return result
 
