@@ -19,7 +19,7 @@ def decorator_with_args_for_any_decorator(func: Callable) -> Callable:
 
 @decorator_with_args_for_any_decorator
 def decorated_decorator(func: Callable) -> Callable:
-    '''Декоратор. Декорирует функцию'''
+    '''Декоратор.'''
 
     @functools.wraps(func)
     def wrapper(func: Callable, *args, **kwargs) -> Callable:
