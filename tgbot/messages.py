@@ -16,6 +16,11 @@ low = '/low - посмотреть минимальное значение.'
 high = '/high - посмотреть максимальное значение.'
 currency = '/currency - выбрать криптовалюту.'
 history = '/history - узнать историю выполненных команду.'
+unknown_message = '''
+Пожалуйста, пользуйтесь кнопками при выборе команды\n\nЕсли вы хотите вернуться
+в стартовое меню  - отправьте команду /cancel
+'''
+
 
 MESSAGES = {
     'start': start_message,
@@ -25,5 +30,6 @@ MESSAGES = {
     'low': low,
     'high': high,
     'currency': currency,
-    'history': history
+    'history': history,
+    'unknown_message': unknown_message
 }

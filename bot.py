@@ -2,10 +2,8 @@ import asyncio
 import logging
 import betterlogging as bl
 
-from aiogram import Bot, Dispatcher, types
-from aiogram.filters.command import Command
+from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
-from aiogram.fsm.strategy import FSMStrategy
 
 from tgbot.config import config
 from tgbot.handlers import currency
@@ -28,7 +26,6 @@ async def main():
 
 
 if __name__ == "__main__":
-    #logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
 
 
