@@ -182,7 +182,7 @@ async def process_choosing_currency(message: Message, state: FSMContext):
 
 
 @currency_router.message(StateFilter(Currency.currency_state))
-async def process_choosing_currency(message: Message):
+async def wrong_choosing_currency(message: Message):
     """
     Этот хэндлер будет срабатывать, если во время выбора криптовалюты
     будет введено некорректное значение.
@@ -272,15 +272,15 @@ async def wrong_custom_period(message: Message):
              'в стартовое меню  - отправьте команду /cancel')
 
 
-@currency_router.message(Command("low"))
-@currency_router.message(Currency.currency_cmd_state, F.text.casefold() == "low")
-async def process_low_cmd(message: Message, state: FSMContext) -> None:
-    """
-    Этот хэндлер будет срабатывать на команду /low, обрабатывать, полученные
+@currency_router.message(StateFilter(Currency.currency_cmd_state),
+                         Text(text=available_currency_cmd))
+async def process_choosing_currency_cmd(message: Message, state: FSMContext):
+    '''
+    Этот хэндлер будет срабатывать на команду /high или /low, обрабатывать, полученные
     данные, выводить результат обработки, завершать машину состояний,
     переводить в состояние ожидания выбора стартовых команд и предлагать выбать
     одну из стартовых команд, нажав на кнопку или отправив команду.
-    """
+    '''
 
     log(message)
     data = await state.update_data(currency_cmd=message.text.lower())
@@ -291,23 +291,14 @@ async def process_low_cmd(message: Message, state: FSMContext) -> None:
                          reply_markup=make_row_keyboard(available_start_cmd))
 
 
-@currency_router.message(Command("high"))
-@currency_router.message(Currency.currency_cmd_state, F.text.casefold() == "high")
-async def process_high_cmd(message: Message, state: FSMContext) -> None:
+@currency_router.message(StateFilter(Currency.currency_state))
+async def wrong_choosing_currency_cmd(message: Message):
     """
-    Этот хэндлер будет срабатывать на команду /high, обрабатывать, полученные
-    данные, выводить результат обработки, завершать машину состояний,
-    переводить в состояние ожидания выбора стартовых команд и предлагать выбать
-    одну из стартовых команд, нажав на кнопку или отправив команду.
+    Этот хэндлер будет срабатывать, если во время выбора high или low
+    будет введено некорректное значение.
     """
 
-    log(message)
-    data = await state.update_data(currency_cmd=message.text.lower())
-    await show_result(message=message, data=data)
-    await state.clear()
-    await state.set_state(Currency.start_cmd_state)
-    await message.answer(f"Выбери команду.",
-                         reply_markup=make_row_keyboard(available_start_cmd))
+    await message.answer(text=MESSAGES["unknown_message"])
 
 
 async def show_result(message: Message, data: Dict[str, Any]) -> None:
