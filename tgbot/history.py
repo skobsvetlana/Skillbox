@@ -1,6 +1,11 @@
 from pathlib import Path
 
 def get_history(user_id: str):
+    '''
+    Функция открывает файл с названием <user_id>.log для чтения и возвращает log_num
+    последних записей с информацией о времени создания записи и сообщением пользователя.
+    '''
+
     file_name = Path(__file__).parent / f"logs/{user_id}.log"
     log_num = 10 # возвращаемое количество записей
 

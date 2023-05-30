@@ -13,6 +13,10 @@ log_level = logging.INFO
 bl.basic_colorized_config(level=log_level)
 
 async def main():
+    '''
+    Функция для запуска телегамм бота.
+    '''
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
